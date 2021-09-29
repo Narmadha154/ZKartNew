@@ -1,13 +1,42 @@
 package com.company.zkartshopping;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.io.*;
+import java.util.*;
 
 public class CustomerDetails {
-    public static Map createCustomerDetails(){
-        Map<String,Customer> map=new HashMap<>();
-        Scanner sc=new Scanner(System.in);
+    public static List<String> readCustomerDetailsFromFile() {
+        List<String> list = new ArrayList<>();
+        File file = new File("/home/inc11/IdeaProjects/ZKart/src/com/company/zkartshopping/customerdetails");
+        try (FileReader fr = new FileReader(file);
+             BufferedReader br = new BufferedReader(fr)) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                list.add(line);
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+    public static List<String> readProductDetailsFromFile() {
+        List<String> list = new ArrayList<>();
+        File file = new File("/home/inc11/IdeaProjects/ZKart/src/com/company/zkartshopping/z-kart_db");
+        try (FileReader fr = new FileReader(file);
+             BufferedReader br = new BufferedReader(fr)) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                list.add(line);
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+       /* Scanner sc=new Scanner(System.in);
         System.out.println("Enter the number of customers want to add");
         int num=sc.nextInt();
         for(int i=1;i<=num;i++){
@@ -31,9 +60,6 @@ public class CustomerDetails {
             details.setEmailId(email);
             details.setEncryptedPwd(newPass);
             details.setMobileNo(mobile);
-            map.put(email,details);
-        }
-        System.out.println(map);
-        return map;
-    }
+            Runner.map.put(email,details);
+        }*/
 }

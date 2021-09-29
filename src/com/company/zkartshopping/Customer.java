@@ -4,7 +4,7 @@ public class Customer {
     private String emailId;
     private String encryptedPwd;
     private String name;
-    private long mobileNo;
+    private String mobileNo;
 
     public String getEmailId() {
         return emailId;
@@ -30,11 +30,11 @@ public class Customer {
         this.name = name;
     }
 
-    public long getMobileNo() {
+    public String getMobileNo() {
         return mobileNo;
     }
 
-    public void setMobileNo(long mobileNo) {
+    public void setMobileNo(String mobileNo) {
         this.mobileNo = mobileNo;
     }
     public String toString(){

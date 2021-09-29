@@ -10,6 +10,5 @@ public class ProductDetails {
                 "Laptop,HP,Elite,56000,20\n" +
                 "Tablet,Google,ChromeBook,8000,12";
         String [] arr=fileContent.split("\n");
-       // Product details=
     }
 }

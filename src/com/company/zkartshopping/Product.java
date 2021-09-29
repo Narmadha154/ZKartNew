@@ -1,18 +1,18 @@
 package com.company.zkartshopping;
 
 public class Product {
-    private String Category;
+    private String category;
     private String brand;
     private String model;
     private int price;
     private int stock;
 
     public String getCategory() {
-        return Category;
+        return category;
     }
 
     public void setCategory(String category) {
-        Category = category;
+        this.category = category;
     }
 
     public String getBrand() {
@@ -45,5 +45,8 @@ public class Product {
 
     public void setStock(int stock) {
         this.stock = stock;
+    }
+    public String toString(){
+        return this.brand+" "+this.model+" "+this.price+" "+this.stock;
     }
 }
