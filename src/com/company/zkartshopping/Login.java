@@ -3,13 +3,12 @@ package com.company.zkartshopping;
 import java.util.Map;
 
 public class Login {
-    public static String accountLogin(String emailId, String pass, Map<String,Customer> map){
-        String name="";
-        if(map.get(emailId)==null){
-            System.out.println("Account not exists..please create the account");
+    public static boolean accountLogin(String emailId, String pass){
+        if(CreateObject.map.get(emailId)==null){
+            return false;
         }
         else{
-            Customer details=map.get(emailId);
+            Customer details=CreateObject.map.get(emailId);
             String password=details.getEncryptedPwd();
             String decryptedPass="";
             for(int i=0;i<password.length();i++){
@@ -17,14 +16,12 @@ public class Login {
             }
             System.out.println(decryptedPass);
             if(decryptedPass.equals(pass)){
-                name=details.getName();
-                System.out.println("Login successfully");
-
+                return true;
             }
             else{
-                System.out.println("password not matched");
+                System.out.println("password doesn't match");
             }
         }
-        return name;
+        return false;
     }
 }
