@@ -1,8 +1,6 @@
 package com.company.zkartshopping;
-
 import java.io.FileWriter;
 import java.io.IOException;
-
 public class AccountCreation {
         public static boolean checkAccount(String email){
             if(CreateObject.map.get(email)==null){

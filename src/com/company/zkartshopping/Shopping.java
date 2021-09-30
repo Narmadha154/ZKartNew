@@ -1,12 +1,11 @@
 package com.company.zkartshopping;
-
 import java.util.*;
-
 public class Shopping {
     static Map<String,ArrayList<OrderHistory>> historyMap=new HashMap<>();
     static int number=15000;
     static int amount=0;
     static List<OrderHistory> kart=new ArrayList<>();
+    static List<Product> proList=new ArrayList<>();
     public static void shopProduct(String email){
         Scanner sc=new Scanner(System.in);
         System.out.println("Enter the category:");
@@ -42,6 +41,7 @@ public class Shopping {
                     history.setModel(model);
                     history.setPrice(pro.getPrice());
                     kart.add(history);
+                    proList.add(pro);
                     System.out.println("Do you want to continue to purchase or add any item or cancel the process");
                     System.out.println("Enter 1 to continue purchase:");
                     System.out.println("Enter 2 to add any item:");
@@ -71,5 +71,6 @@ public class Shopping {
                 System.out.println("model not matched");
             }
         }
+        kart=new ArrayList<>();
     }
 }

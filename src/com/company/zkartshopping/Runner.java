@@ -1,7 +1,5 @@
 package com.company.zkartshopping;
-
 import java.util.*;
-
 public class Runner {
     static List<String> customerList=CustomerDetails.readCustomerDetailsFromFile();
     static List<String> productList=CustomerDetails.readProductDetailsFromFile();
@@ -81,25 +79,45 @@ public class Runner {
                                 System.out.println("Logged in successfully");
                             } else {
                                 System.out.println("Account not exists...Please create the account");
+                                return;
                             }
-                            Shopping.shopProduct(emailId);
-                            System.out.println("Enter 1 to check order history or 2 to exit");
-                            int choose = sc.nextInt();
-                            switch (choose) {
-                                case 1:
-                                    PrintOrderHistory.printHistory(emailId);
-                                    break;
-                                case 2:
-                                    return;
-                            }
-                            break;
+                                System.out.println("1.shopping");
+                                System.out.println("2.order history");
+                                System.out.println("3.exit");
+                                System.out.println("Enter the choice");
+                                int choose=sc.nextInt();
+                                switch (choose) {
+                                    case 1:
+                                        Shopping.shopProduct(emailId);
+                                        break;
+                                    case 2:
+                                        PrintOrderHistory.printHistory(emailId);
+                                        break;
+                                    case 3:
+                                        break;
+                                }
+                                break;
                             case 2:
                                 sc.nextLine();
                                 System.out.println("Enter your emailId:");
                                 String emaId = sc.nextLine();
-                                System.out.println("Enter the password:");
-                                String passWd = sc.nextLine();
-
+                                System.out.println(AdminInfo.getEmailId());
+                                if(emaId.equals(AdminInfo.getEmailId())){
+                                    System.out.println("Enter the password:");
+                                    String passWd = sc.nextLine();
+                                    if(passWd.equals(AdminInfo.getPassword())){
+                                        if(AdminInfo.getPassword()=="xyzzy"){
+                                            System.out.println("change password");
+                                            String newPasswd=sc.nextLine();
+                                            AdminInfo.setPassword(newPasswd);
+                                        }
+                                           System.out.println("logged in successfully");
+                                           Admin.adminCheck();
+                                    }
+                                }
+                                else{
+                                    System.out.println("email id doesn't match");
+                                }
                                 break;
                             case 3:
                                 return;
