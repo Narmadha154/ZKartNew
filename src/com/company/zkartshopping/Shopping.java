@@ -50,6 +50,9 @@ public class Shopping {
                     if(choice==1){
                         System.out.println("your order is placed");
                         historyMap.put(email, (ArrayList<OrderHistory>) kart);
+                        history.setTotalCost(amount);
+                        amount=0;
+                        kart=new ArrayList<>();
                         return;
                     }
                     else if(choice==2) {
@@ -62,7 +65,6 @@ public class Shopping {
                 else{
                     System.out.println("Product stock is not enough..."+"only"+ pro.getStock()+"available" );
                 }
-                history.setTotalCost(amount);
             }
             else if(!pro.getBrand().equals(brand)){
                 System.out.println("brand not matched");
@@ -71,6 +73,5 @@ public class Shopping {
                 System.out.println("model not matched");
             }
         }
-        kart=new ArrayList<>();
     }
 }

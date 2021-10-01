@@ -6,6 +6,8 @@ public class Runner {
     public static void main(String[] args) {
         CreateObject.setCustomerObject();
         CreateObject.setProductObject();
+        String code= GenerateDiscount.generateCouponCode();
+        System.out.println(code);
         while(true){
             Scanner sc=new Scanner(System.in);
             System.out.println("-------------Z-kart online shopping--------------");
@@ -81,21 +83,26 @@ public class Runner {
                                 System.out.println("Account not exists...Please create the account");
                                 return;
                             }
+                            boolean val=true;
+                            while(val) {
                                 System.out.println("1.shopping");
-                                System.out.println("2.order history");
-                                System.out.println("3.exit");
+                                System.out.println("2.exit");
                                 System.out.println("Enter the choice");
-                                int choose=sc.nextInt();
+                                int choose = sc.nextInt();
                                 switch (choose) {
                                     case 1:
                                         Shopping.shopProduct(emailId);
+                                        System.out.println("Do you want to check your order history(y=1 or n=0)");
+                                        int value = sc.nextInt();
+                                        if (value == 1) {
+                                            PrintOrderHistory.printHistory(emailId);
+                                        }
                                         break;
                                     case 2:
-                                        PrintOrderHistory.printHistory(emailId);
-                                        break;
-                                    case 3:
+                                        val=false;
                                         break;
                                 }
+                            }
                                 break;
                             case 2:
                                 sc.nextLine();
